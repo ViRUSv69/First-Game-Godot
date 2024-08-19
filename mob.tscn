@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cx5xewlh6dnuc"]
+
+[ext_resource type="Script" path="res://mob.gd" id="1_wfc0o"]
+[ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://characters/slime/slime.tscn" id="2_qlsui"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5bsu1"]
+radius = 53.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8lfi"]
+bg_color = Color(0.189326, 0.16096, 0.20266, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2w8wf"]
+bg_color = Color(1, 0, 0.113725, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Mob" type="CharacterBody2D"]
+collision_layer = 3
+script = ExtResource("1_wfc0o")
+
+[node name="Slime" parent="." instance=ExtResource("2_qlsui")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -29)
+shape = SubResource("CircleShape2D_5bsu1")
+
+[node name="MobHealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -56.0
+offset_top = -104.0
+offset_right = 56.0
+offset_bottom = -85.0
+theme_override_styles/background = SubResource("StyleBoxFlat_l8lfi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2w8wf")
+max_value = 3.0
+value = 3.0
+show_percentage = false

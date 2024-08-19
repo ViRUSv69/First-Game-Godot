@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfxd2ol8i41px"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_i36l4"]
+[ext_resource type="PackedScene" uid="uid://btpqor03vcqio" path="res://player.tscn" id="1_xvohg"]
+[ext_resource type="PackedScene" uid="uid://bf4sad434wo2y" path="res://tree.tscn" id="2_1u4xu"]
+
+[sub_resource type="Curve2D" id="Curve2D_hiecu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1132, -369, 0, 0, 0, 0, -969.626, -373.782, 0, 0, 0, 0, 1091.63, -369.327, 0, 0, 0, 0, 1074, 953, 0, 0, 0, 0, -1130.2, 972.474, 0, 0, 0, 0, -1132, -372, 0, 0, 0, 0, -756, -372)
+}
+point_count = 7
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(3, 0)
+script = ExtResource("1_i36l4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -30
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 1924.0
+offset_bottom = 1087.0
+
+[node name="AttackNotice" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+offset_left = 39.0
+offset_top = 16.0
+offset_right = 364.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+text = "Press SPACE for SPLASH ATTACK"
+
+[node name="Player" parent="." instance=ExtResource("1_xvohg")]
+position = Vector2(874, 478)
+
+[node name="Tree" parent="." instance=ExtResource("2_1u4xu")]
+position = Vector2(312, 638)
+
+[node name="Tree2" parent="." instance=ExtResource("2_1u4xu")]
+position = Vector2(1220, 117)
+
+[node name="Tree3" parent="." instance=ExtResource("2_1u4xu")]
+position = Vector2(1330, 128)
+
+[node name="Tree4" parent="." instance=ExtResource("2_1u4xu")]
+position = Vector2(1264, 177)
+
+[node name="Tree5" parent="." instance=ExtResource("2_1u4xu")]
+position = Vector2(769, 789)
+
+[node name="Tree6" parent="." instance=ExtResource("2_1u4xu")]
+position = Vector2(1551, 821)
+
+[node name="Tree7" parent="." instance=ExtResource("2_1u4xu")]
+position = Vector2(300, 224)
+
+[node name="Tree8" parent="." instance=ExtResource("2_1u4xu")]
+position = Vector2(1547, 354)
+
+[node name="Spawner" type="Path2D" parent="."]
+position = Vector2(1057.88, 152.523)
+scale = Vector2(1.10855, 1.12237)
+curve = SubResource("Curve2D_hiecu")
+
+[node name="spawner_follow" type="PathFollow2D" parent="Spawner"]
+unique_name_in_owner = true
+position = Vector2(-1132, -369)
+rotation = -0.0294421
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+autostart = true
+
+[connection signal="health_finish" from="Player" to="." method="_on_player_health_finish"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
