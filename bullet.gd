@@ -2,6 +2,8 @@ extends Area2D
 
 var travelled_distane = 0
 
+@export var bullet_damage  = 1
+
 func _physics_process(delta):
 	var SPEED = 1000
 	var RANGE = 1200
@@ -18,5 +20,7 @@ func _physics_process(delta):
 
 func _on_body_entered(body) -> void:
 	queue_free()
-	if body.has_method("take_damage"):
-		body.take_damage()
+	var attack = Attack.new()
+	attack.attack_damage = bullet_damage 
+	if body is Enemy:
+		body.take_damage(attack)

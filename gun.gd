@@ -1,5 +1,7 @@
 extends Area2D
 
+@export var DAMAGE = 1
+
 func _physics_process(delta):
 	var mobs_in_range= get_overlapping_bodies()
 	if mobs_in_range.size() > 0:

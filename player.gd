@@ -29,13 +29,16 @@ func _physics_process(delta):
 	var overlapping_mobs = %Hurtbox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
 		Player_Health -= DAMAGE_RATE * overlapping_mobs.size() * delta
-		%PlayerHealthBar.value = Player_Health
-		if Player_Health <= 0:
+	%PlayerHealthBar.value = Player_Health
+	if Player_Health <= 0:
 			health_finish.emit() 
-	
-
 
 func _on_timer_timeout() -> void:
 	%AttackBar.value = %AttackBar.max_value
 	%AttackNotice.visible = true
+
+func health_filler_50():
+	%HealthNotice.visible = false
+	Player_Health += 50
+	%PlayerHealthBar.value = Player_Health
 	
