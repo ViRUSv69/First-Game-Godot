@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bch5kk3bheyh6"]
+[gd_scene load_steps=3 format=3 uid="uid://bch5kk3bheyh6"]
 
 [ext_resource type="Script" path="res://game_over.gd" id="1_byjtn"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_1x38m"]
+file = "res://assets/game.ogg"
 
 [node name="GameOver" type="CanvasLayer"]
 script = ExtResource("1_byjtn")
@@ -11,7 +14,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.782555, 0.557138, 0.432399, 1)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="ColorRect"]
+modulate = Color(0.298039, 0.298039, 0.298039, 0.788235)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -36.0
+offset_right = 8.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = SubResource("VideoStreamTheora_1x38m")
+autoplay = true
+loop = true
 
 [node name="Label" type="Label" parent="ColorRect"]
 layout_mode = 1
@@ -26,6 +44,7 @@ offset_right = 370.0
 offset_bottom = -73.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 131
 text = "GAME OVER"
 

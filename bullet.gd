@@ -15,9 +15,6 @@ func _physics_process(delta):
 	if travelled_distane > RANGE:
 		queue_free()
 
-
-
-
 func _on_body_entered(body) -> void:
 	queue_free()
 	var attack = Attack.new()

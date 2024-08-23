@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfxd2ol8i41px"]
+[gd_scene load_steps=7 format=3 uid="uid://cfxd2ol8i41px"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_i36l4"]
 [ext_resource type="PackedScene" uid="uid://btpqor03vcqio" path="res://player.tscn" id="1_xvohg"]
 [ext_resource type="PackedScene" uid="uid://bf4sad434wo2y" path="res://tree.tscn" id="2_1u4xu"]
+[ext_resource type="PackedScene" uid="uid://ctxfupuynog2w" path="res://scenes/pause_menu.tscn" id="4_6swxf"]
 
 [sub_resource type="Curve2D" id="Curve2D_hiecu"]
 _data = {
@@ -54,6 +55,14 @@ text = "Health Pack Dropped"
 
 [node name="Player" parent="." instance=ExtResource("1_xvohg")]
 position = Vector2(874, 478)
+
+[node name="PauseMenu" parent="Player" instance=ExtResource("4_6swxf")]
+unique_name_in_owner = true
+visible = false
+offset_left = -864.0
+offset_top = -30.0
+offset_right = -864.0
+offset_bottom = -30.0
 
 [node name="Tree" parent="." instance=ExtResource("2_1u4xu")]
 position = Vector2(312, 638)

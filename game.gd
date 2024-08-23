@@ -1,5 +1,8 @@
 extends Node2D
 
+@onready var pause_menu = %PauseMenu
+var pause = false
+
 func spawn():
 	var new_mob = preload("res://mob.tscn").instantiate()
 	%spawner_follow.progress_ratio = randf()
@@ -20,3 +23,16 @@ func _on_health_spawner_timer_timeout() -> void:
 	health_spawn()
 	%HealthNotice.visible = true
 	
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		pauseMenu()
+		
+func pauseMenu():
+	if pause:
+		pause_menu.hide()
+		Engine.time_scale = 1
+	else:
+		pause_menu.show()
+		Engine.time_scale = 0
+	
+	pause = !pause
