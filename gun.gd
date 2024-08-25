@@ -3,10 +3,7 @@ extends Area2D
 @export var DAMAGE = 1
 
 func _physics_process(delta):
-	var mobs_in_range= get_overlapping_bodies()
-	if mobs_in_range.size() > 0:
-		var target_mob = mobs_in_range.front()
-		look_at(target_mob.global_position) 
+	look_at(get_global_mouse_position()) 
 
 func shoot():
 	const BULLET = preload("res://bullet.tscn")

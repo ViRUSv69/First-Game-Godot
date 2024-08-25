@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 
 var health = 3
+var Damage = 5
 
 @onready var player= get_node("/root/Game/Player")
 
@@ -25,5 +26,5 @@ func take_damage(attack: Attack):
 	%MobHealthBar.value = health
 	%Slime.play_hurt()
 	
-	if health == 0:
+	if health <= 0:
 		kill()
