@@ -1,0 +1,13 @@
+0.3
+GAME NAME : ATTACK ON SLIME
+Added : Pause Button in Game Screen
+Added : Start Screen
+Added : Level Bar
+Updated Game Mechanics : Shoots where you point your cursor
+Updated : Pause Menu Screen
+Updated : Game Over Screen
+Updated : Personalized Damage from Enemies
+Updated : Health Manager
+Updated : Now you get access to Rifle after Level 3
+Fixed : Splash attack doesn't kill but applies a damage of 5
+
